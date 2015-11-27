@@ -14,7 +14,12 @@ import (
 )
 
 func main() {
-	body := get("http://site.douban.com/Ceekay/")
+	if len(os.Args) != 2 {
+		fmt.Println("Please give me the url of the musican.")
+		return
+	}
+	//body := get("http://site.douban.com/Ceekay/")
+	body := get(os.Args[1])
 	os.Mkdir("music", 0755)
 	
 	re0 := regexp.MustCompile(`(?s)<div class="sp-nav">.*?<div class="sp-logo">.*?<img.*?alt="(.*?)"`)
